@@ -1,0 +1,64 @@
+import * as userService from "../services/user.service.js";
+import { sendMail } from "../utils/mail.js";
+
+export async function register(req, res, next) {
+  try {
+    const { name, email, password, age, gender } = req.body;
+    const user = await userService.createUser({ name, email, password, age, gender });
+
+    // Optionally send welcome email (best practice: don't block registration on email)
+    sendMail({
+      to: user.email,
+      subject: "Welcome to NexBuy!",
+      text: `Hi ${user.name}, welcome to NexBuy.`
+    }).catch((err) => {
+      console.warn("Welcome email failed:", err.message);
+    });
+
+    res.status(201).json({ message: "User created", user: { id: user._id, email: user.email, name: user.name } });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function login(req, res, next) {
+  try {
+    const { email, password } = req.body;
+    const {token} = await userService.loginUser({ email, password });
+    res.json({ token });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function me(req, res, next) {
+  try {
+    const user = await userService.getUserById(req.user.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function addProductToCart(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const { productId, quantity } = req.body;
+    const user = await userService.addToCart(userId, productId, Number(quantity) || 1);
+    res.json({ message: "Added to cart", cart: user.cart });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function removeProductFromCart(req, res, next) {
+  try {
+    const userId = req.user.id;
+    const { productId, removeAll } = req.body;
+    const user = await userService.removeFromCart(userId, productId, removeAll !== false);
+    res.json({ message: "Item updated in cart", cart: user.cart });
+  } catch (err) {
+    next(err);
+  }
+}
