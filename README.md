@@ -304,5 +304,5 @@ This project is [ISC](LICENSE) licensed.
 
 ## 🔗 Related
 
-- [Frontend Repository](https://github.com/AbdoAbdelfatah/nexbuy-frontend) - Angular frontend application
+- [Frontend Repository](https://github.com/bahaazenhom/NexBuy-Frontend) - Angular frontend application
 
