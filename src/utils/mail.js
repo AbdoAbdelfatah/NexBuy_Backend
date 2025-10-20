@@ -1,23 +1,24 @@
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-    host:'localHost',
-    port:587,
-    secure:false,
+    service: "gmail",
     auth:{
         user:"abdofatah410@gmail.com",
-        pass:""
-    }
+        pass:"shgyjvdnwfdozjge"
+    },
+    tls: {
+    // ✅ Allow self-signed certificates if needed
+    rejectUnauthorized: false,
+  }
 });
 
-export async function sendMail({ to, subject, text, html }) {
+export async function sendMail({ to, subject, text }) {
   try {
     const info = await transporter.sendMail({
       from:"abdofatah410@gmail.com",
       to,
       subject,
-      text,
-      html
+      text
     });
     return info;
   } catch (err) {
