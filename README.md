@@ -306,9 +306,3 @@ This project is [ISC](LICENSE) licensed.
 
 - [Frontend Repository](https://github.com/AbdoAbdelfatah/nexbuy-frontend) - Angular frontend application
 
----
-
-<div align="center">
-  Made with ❤️ by Abdo Abdelfatah
-</div>
-
