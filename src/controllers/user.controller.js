@@ -6,6 +6,9 @@ export async function register(req, res, next) {
     const { name, email, password, age, gender } = req.body;
     const user = await userService.createUser({ name, email, password, age, gender });
 
+    // Generate token for auto-login
+    const { token } = await userService.login({ email, password });
+
     // Optionally send welcome email (best practice: don't block registration on email)
     sendMail({
       to: user.email,
@@ -15,7 +18,18 @@ export async function register(req, res, next) {
       console.warn("Welcome email failed:", err.message);
     });
 
-    res.status(201).json({ message: "User created", user: { id: user._id, email: user.email, name: user.name } });
+    res.status(201).json({ 
+      message: "User created", 
+      token,
+      user: { 
+        _id: user._id, 
+        email: user.email, 
+        name: user.name,
+        age: user.age,
+        gender: user.gender,
+        cart: []
+      } 
+    });
   } catch (err) {
     next(err);
   }
@@ -24,8 +38,19 @@ export async function register(req, res, next) {
 export async function login(req, res, next) {
   try {
     const { email, password } = req.body;
-    const {token} = await userService.loginUser({ email, password });
-    res.json({ token });
+    const { token, id } = await userService.login({ email, password });
+    const user = await userService.getUserById(id);
+    res.json({ 
+      token, 
+      user: { 
+        _id: user._id, 
+        name: user.name, 
+        email: user.email, 
+        age: user.age, 
+        gender: user.gender,
+        cart: user.cart 
+      } 
+    });
   } catch (err) {
     next(err);
   }

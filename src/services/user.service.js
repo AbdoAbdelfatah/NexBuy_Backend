@@ -16,7 +16,7 @@ export async function login({email,password}) {
     if(!isMatch)throw Object.assign(new Error("Invalid credentials"), { status: 401 });
 
     const token = signToken({id:user._id});
-    return token;
+    return { token, id: user._id };
 }
 
 export async function getUserById(id) {

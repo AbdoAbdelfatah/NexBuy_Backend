@@ -17,22 +17,5 @@ export async function getProductById(productId) {
 }
 
 export async function listProducts(filter = {}, options = {}) {
-  // options could include pagination in future
   return Product.find(filter).sort({ createdAt: -1 });
 }
-
-   /* return await Product.aggregate([{
-        $lookup:{
-            from:"users",
-            localField:"createdBy",
-            foreignField:"_id",
-            as:"userData"
-        }
-    },{
-    $project: {
-      title: 1,
-      price: 1,
-      "userData.name": 1,
-      "userData.email": 1
-    }
-  }]); */

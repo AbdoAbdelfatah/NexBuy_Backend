@@ -1,5 +1,6 @@
-import mogoose from 'mongoose';
-const commentSchema = new mogoose.Schema({
+import mongoose from 'mongoose';
+
+const commentSchema = new mongoose.Schema({
     content:{
         type:String,
         required:true,
@@ -12,12 +13,12 @@ const commentSchema = new mogoose.Schema({
         required:true
     },
     productId:{
-        type:mogoose.Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"Product",
         required:true
     },
     userId:{
-        type:mogoose.Schema.Types.ObjectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
     }
@@ -25,4 +26,4 @@ const commentSchema = new mogoose.Schema({
     timestamps:true
 });
 
-export default mogoose.models.Comment || mogoose.model("Comment",commentSchema);
+export default mongoose.models.Comment || mongoose.model("Comment",commentSchema);
