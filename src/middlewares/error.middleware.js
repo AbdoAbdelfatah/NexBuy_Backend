@@ -5,6 +5,6 @@ export default function errorHandler(err, req, res, next) {
   res.status(status).json({
     message: err.message || "Internal Server Error",
     // avoid sending stack in production
-    ...(process.env.NODE_ENV !== "production" ? { stack: err.stack } : {})
+    stack:err.stack  
   });
 }
