@@ -5,7 +5,7 @@ A robust and scalable RESTful API for an e-commerce platform built with Node.js,
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-v5-blue.svg)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-v8-green.svg)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/License-ISC-yellow.svg)](LICENSE)
+
 
 ## ✨ Features
 
@@ -283,14 +283,6 @@ nexbuy-backend/
 ├── package.json
 └── README.md
 ```
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-## � License
-
-This project is [ISC](LICENSE) licensed.
 
 ## 👨‍� Authors
 
