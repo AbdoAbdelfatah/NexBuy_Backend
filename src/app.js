@@ -1,9 +1,8 @@
 import express from "express";
-import userRoutes from "./routes/user.routes.js";
-import productRoutes from "./routes/product.routes.js";
-import commentRoutes from "./routes/comment.routes.js";
-import orderRoutes from "./routes/order.routes.js";
-import errorHandler from "./middlewares/error.middleware";
+import userRoutes from "./routers/user.router.js";
+import productRoutes from "./routers/product.router.js";
+import commentRoutes from "./routers/comment.router.js";
+import errorHandler from "./middlewares/error.middleware.js";
 
 const app = express();
 
@@ -13,8 +12,7 @@ app.use(express.json()); // parse JSON bodies
 // register routes
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
-app.use("/comments", commentRoutes);
-app.use("/orders", orderRoutes);
+app.use("/comments", commentRoutes); 
 
 // global error handler (must be after routes)
 app.use(errorHandler);

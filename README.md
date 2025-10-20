@@ -47,3 +47,28 @@ project-name/
 Notes:
 The controller = handles input/output and decisions
 The service = handles data and business logic (database only)
+
+## Features
+
+- Users (register/login) with JWT auth
+- Products CRUD (create/list/get/delete)
+- User cart: add/remove items
+- Comments: add a comment + rating for products
+- Nodemailer helper for sending emails (welcome/order)
+- JWT & bcrypt security for auth
+
+## API
+
+POST /users/register { name, email, password, age, gender }
+POST /users/login { email, password } -> returns token
+GET /users/me (auth)
+POST /users/cart/add { productId, quantity } (auth)
+POST /users/cart/remove { productId, removeAll } (auth)
+
+POST /products (auth) create product
+GET /products list
+GET /products/:id
+DELETE /products/:id (owner only)
+
+POST /comments { productId, content, rate } (auth)
+GET /comments/:productId

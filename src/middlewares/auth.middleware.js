@@ -1,4 +1,4 @@
-import verify from "../utils/jwt";
+import {verify} from "../utils/jwt.js";
 
 export const authMiddleware = (req, res, next) => {
   const header = req.headers.authorization
