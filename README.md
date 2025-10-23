@@ -5,6 +5,8 @@ A robust and scalable RESTful API for an e-commerce platform built with Node.js,
 [![Node.js](https://img.shields.io/badge/Node.js-v18+-green.svg)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-v5-blue.svg)](https://expressjs.com/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-v8-green.svg)](https://www.mongodb.com/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success.svg)](https://nexbuy-frontend.obl.ee/)
+
 
 
 ## ✨ Features
@@ -216,9 +218,9 @@ Token is returned upon successful login/registration and expires after 7 days.
 - **Password Hashing**: bcrypt with salt rounds
 - **JWT Tokens**: Secure authentication with expiration
 - **Input Validation**: Joi schemas for all inputs
-- **CORS Protection**: Configurable allowed origins
 - **Error Handling**: Centralized error middleware
 - **Ownership Verification**: Users can only modify their own resources
+- **Environment Variables**: Sensitive data stored securely
 
 ## 🧪 Tech Stack
 
@@ -232,7 +234,6 @@ Token is returned upon successful login/registration and expires after 7 days.
 | **Bcrypt** | Password hashing |
 | **Joi** | Input validation |
 | **Nodemailer** | Email notifications |
-| **CORS** | Cross-origin resource sharing |
 | **Dotenv** | Environment variables |
 
 ## 📦 Project Structure
