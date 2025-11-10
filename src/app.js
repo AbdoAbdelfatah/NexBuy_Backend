@@ -8,29 +8,8 @@ import errorHandler from "./middlewares/error.middleware.js";
 
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-  origin: function (origin, callback) {
-    const allowedOrigins = [
-      process.env.FRONTEND_URL,
-      'http://localhost:4200',
-      'https://nexbuy-frontend.obl.ee'
-    ].filter(Boolean);
-    
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200
-};
-
-// global middlewares
-app.use(cors(corsOptions));
+// global middlewares - Allow all origins for now
+app.use(cors());
 app.use(express.json());
 
 // register routes
